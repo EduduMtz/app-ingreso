@@ -1,0 +1,32 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar class="barra">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding fondo">
+    <ion-buttons>
+      <ion-button (click)="cambioPass()" class="boton">Cambiar contraseña</ion-button>
+    </ion-buttons>
+    <ion-buttons>
+      <ion-button (click)="logout()" class="boton">Cerrar Sesión</ion-button>
+    </ion-buttons>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar class="barra">
+      <ion-toolbar class="barra">
+        <ion-title size="large">Bienvenido - {{ user }}</ion-title>
+      </ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" class="ion-padding fondo">
+    <p>{{ msj }}</p>
+  </ion-content>
+</div>
