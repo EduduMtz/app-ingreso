@@ -32,6 +32,10 @@ export class LoginPage implements OnInit {
           }
         }
         this.router.navigate(["principal"], extras);
+
+        this.mdl_user = '';
+        this.mdl_pass = '';
+        
       } else {
         this.warningVisible = true;
       }
@@ -42,5 +46,9 @@ export class LoginPage implements OnInit {
 
   registro(){
     this.router.navigate(["register"]);
+    this.mdl_user = '';
+    this.mdl_pass = '';
+    this.warningVisible = false;
+    this.loadingVisible = false;
   }
 }

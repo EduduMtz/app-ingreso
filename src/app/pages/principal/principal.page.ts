@@ -16,7 +16,6 @@ export class PrincipalPage implements OnInit {
 
   ngOnInit() {
 
-    // RESCATAMOS LOS PARAMETROS DE NAVEGACION
     let extras = this.router.getCurrentNavigation()?.extras;
 
     if(extras?.state){
@@ -36,11 +35,7 @@ export class PrincipalPage implements OnInit {
   }
 
   logout() {
-    // Aquí puedes eliminar cualquier dato de sesión o credenciales guardadas
-    // Por ejemplo, si estás usando LocalStorage:
     localStorage.removeItem('user');
-
-    // Redirigir al usuario de vuelta a la página de login
     this.router.navigate(['login']);
   }
 

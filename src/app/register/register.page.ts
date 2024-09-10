@@ -22,6 +22,11 @@ export class RegisterPage implements OnInit {
     if (this.mdl_pass === this.confirm_pass) {
       if (this.userService.register(this.mdl_user, this.mdl_pass)) {
         this.router.navigate(["login"]);
+
+        this.mdl_pass = '';
+        this.mdl_user = '';
+        this.confirm_pass = '';
+
       } else {
         this.warningVisible = true;
       }

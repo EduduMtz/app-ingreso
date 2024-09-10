@@ -55,4 +55,5 @@ export class UserService {
   logout(): void {
     this.currentUser = null;
   }
+
 }

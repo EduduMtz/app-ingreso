@@ -10,13 +10,13 @@
 <ion-content [fullscreen]="true" class="ion-padding fondo">
   <form (ngSubmit)="register()">
     <ion-item class="input" lines="nones">
-      <ion-input [(ngModel)]="mdl_user" name="usuario" label="Usuario" labelPlaceholder="floating"></ion-input>
+      <ion-input [(ngModel)]="mdl_user" name="usuario" label="Usuario" labelPlacement="floating"></ion-input>
     </ion-item>
     <ion-item class="input" lines="nones">
-      <ion-input [(ngModel)]="mdl_pass" name="password" type="password" label="Contraseña" labelPlaceholder="floating"></ion-input>
+      <ion-input [(ngModel)]="mdl_pass" name="password" type="password" label="Contraseña" labelPlacement="floating"></ion-input>
     </ion-item>
     <ion-item class="input" lines="nones">
-      <ion-input [(ngModel)]="confirm_pass" name="confirm_password" type="password" label="Confirmar Contraseña" labelPlaceholder="floating"></ion-input>
+      <ion-input [(ngModel)]="confirm_pass" name="confirm_password" type="password" label="Confirmar Contraseña" labelPlacement="floating"></ion-input>
     </ion-item>
     <ion-button expand="block" type="submit" class="boton">
       Enviar

@@ -37,17 +37,21 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 .barra {
-    --background: antiquewhite;
-    --color: #51411c;
+    --background: #000000;
+    --color: antiquewhite;
+}
+
+.titulo {
+    font-weight: bold;
 }
 
 .fondo {
-    --background: #dad8b2;
+    --background: #262729;
 }
 
 .boton {
-    --background: antiquewhite;
-    --color: #000;
+    --background: rgb(70, 71, 78);
+    --color: #fbfbfb;
     height: 56px;
     border-radius: 5px;
     font-weight: bold;
@@ -70,4 +74,19 @@
     font-weight: bold;
     border-radius: 5px;
     margin-top: 10px;
+}
+
+ion-checkbox {
+    --size: 32px;
+    --checkbox-background-checked: #19ec15;
+  }
+  
+ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 2px solid #27ec15;
+  }
+
+img{
+width: 100%;
+height: auto;
 }

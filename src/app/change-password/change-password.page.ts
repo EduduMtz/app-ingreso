@@ -11,6 +11,7 @@ export class ChangePasswordPage {
   currentPassword: string = '';
   newPassword: string = '';
   confirmNewPassword: string = '';
+  closeOtherSessions: boolean = false;
   warningVisible: boolean = false;
   successVisible: boolean = false;
 
@@ -36,11 +37,27 @@ export class ChangePasswordPage {
     const passwordChanged = this.userService.changePassword(this.newPassword);
 
     if (passwordChanged) {
-      this.successVisible = true;
-      // Redirigir después de un breve retraso
-      setTimeout(() => {
-        this.router.navigate(['principal']);
-      }, 2000);
+      this.successVisible = true;  // Mostrar el mensaje de éxito
+  
+      if (this.closeOtherSessions) {
+        // Mostrar mensaje de que las sesiones se están cerrando
+        setTimeout(() => {
+          this.router.navigate(['login']);  // Redirigir al login
+          this.currentPassword = '';
+          this.newPassword = '';
+          this.confirmNewPassword = '';
+
+        }, 2000);
+      } else {
+        // Mostrar mensaje de éxito normal
+        setTimeout(() => {
+          this.router.navigate(['principal']);  // Redirigir a la página principal
+          this.currentPassword = '';
+          this.newPassword = '';
+          this.confirmNewPassword = '';
+          
+        }, 2000);
+      }
     } else {
       this.warningVisible = true;
     }
