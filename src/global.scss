@@ -38,11 +38,16 @@
 
 .barra {
     --background: #000000;
-    --color: antiquewhite;
+    --color: rgb(223, 188, 49);
 }
 
 .titulo {
     font-weight: bold;
+    font-size: 30px;
+}
+
+.addIcon{
+    color: #ffbb00;
 }
 
 .fondo {
@@ -78,15 +83,25 @@
 
 ion-checkbox {
     --size: 32px;
-    --checkbox-background-checked: #19ec15;
+    --checkbox-background-checked: #ecd315;
   }
   
 ion-checkbox::part(container) {
     border-radius: 6px;
-    border: 2px solid #27ec15;
+    border: 2px solid #ecd315;
   }
 
 img{
 width: 100%;
 height: auto;
+}
+
+ion-item .input {
+    position: relative;
+  }
+  
+ion-icon {
+cursor: pointer;
+font-size: 24px;
+color: var(--ion-color-primary);
 }

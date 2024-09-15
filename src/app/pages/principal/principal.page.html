@@ -9,6 +9,9 @@
       <ion-button (click)="cambioPass()" class="boton">Cambiar contraseña</ion-button>
     </ion-buttons>
     <ion-buttons>
+      <ion-button (click)="infoUser()" class="boton">Informacion del usuario</ion-button>
+    </ion-buttons>
+    <ion-buttons>
       <ion-button (click)="logout()" class="boton">Cerrar Sesión</ion-button>
     </ion-buttons>
   </ion-content>
@@ -18,7 +21,7 @@
   <ion-header [translucent]="true">
     <ion-toolbar class="barra">
       <ion-toolbar class="barra">
-        <ion-title size="large">Bienvenido - {{ user }}</ion-title>
+        <ion-title class="titulo" size="large">Bienvenido - {{ name }}</ion-title>
       </ion-toolbar>
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>

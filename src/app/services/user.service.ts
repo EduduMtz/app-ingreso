@@ -4,18 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private users: Array<{ usuario: string, password: string }> = [
-    { usuario: 'admin', password: 'admin' }
-  ];
+  private users: Array<{ usuario: string, password: string, correo: string, nombre: string, apellido: string}> = [];
   
-  private currentUser: { usuario: string, password: string } | null = null;
+  private currentUser: { usuario: string, password: string, correo: string, nombre: string, apellido: string } | null = null;
 
   constructor() {
-    // Simulamos que el usuario 'admin' está actualmente autenticado.
-    this.currentUser = this.users.find(user => user.usuario === 'admin') || null;
+    this.currentUser = null;
   }
 
-  // Verificar si la contraseña actual ingresada es correcta
+  // Verificar contraseña
   verifyPassword(password: string): boolean {
     if (this.currentUser) {
       return this.currentUser.password === password;
@@ -27,14 +24,15 @@ export class UserService {
   changePassword(newPassword: string): boolean {
     if (this.currentUser) {
       this.currentUser.password = newPassword;
-      return true; // Simulación de éxito
+      return true;
     }
     return false;
   }
 
   // Método para autenticar al usuario durante el login
   login(usuario: string, password: string): boolean {
-    const user = this.users.find(user => user.usuario === usuario && user.password === password);
+    const normalizarUsuario = usuario.toLowerCase();
+    const user = this.users.find(user => user.usuario === normalizarUsuario && user.password === password);
     if (user) {
       this.currentUser = user;
       return true;
@@ -43,12 +41,17 @@ export class UserService {
   }
 
   // Método para registrar un nuevo usuario
-  register(usuario: string, password: string): boolean {
-    if (!this.users.some(user => user.usuario === usuario)) {
-      this.users.push({ usuario, password });
+  register(usuario: string, password: string, correo: string, nombre: string, apellido: string): boolean {
+    const normalizarUsuario = usuario.toLowerCase();
+    if (!this.users.some(user => user.usuario === normalizarUsuario)) {
+      this.users.push({ usuario: normalizarUsuario, password, correo, nombre, apellido });
       return true;
     }
     return false;
+  }
+
+  getUser(){
+    return this.currentUser;
   }
 
   // Método para cerrar sesión

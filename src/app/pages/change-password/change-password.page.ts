@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-change-password',
@@ -14,8 +14,22 @@ export class ChangePasswordPage {
   closeOtherSessions: boolean = false;
   warningVisible: boolean = false;
   successVisible: boolean = false;
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
 
   constructor(private userService: UserService, private router: Router) {}
+
+
+  togglePasswordVisibility(){
+    if(this.passwordType === 'password'){
+      this.passwordType = 'text';
+      this.passwordIcon = 'eye';
+    }
+    else{
+      this.passwordType = 'password';
+      this.passwordIcon = 'eye-off';
+    }
+  }
 
   changePassword() {
     this.warningVisible = false;

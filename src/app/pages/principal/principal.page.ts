@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-principal',
@@ -8,22 +9,30 @@ import { Router } from '@angular/router';
 })
 export class PrincipalPage implements OnInit {
 
+  name  : String = '';
+  email : String = '';
+  last_name : String = '';
   user  : String = '';
   pass  : String = '';
   msj   : String = '';
 
-  constructor(private router : Router) { }
+  constructor(private router: Router, private userService : UserService) { }
 
   ngOnInit() {
 
-    let extras = this.router.getCurrentNavigation()?.extras;
+    const currentUser = this.userService.getUser();
 
-    if(extras?.state){
-      this.user = extras.state["usuario"];
-      this.pass = extras.state["password"];
-      this.msj = extras.state["token"];
+    if(currentUser){
+      this.name = currentUser.nombre;
+      this.email = currentUser.correo;
+      this.last_name = currentUser.apellido;
+      this.user = currentUser.usuario;
+      this.pass = currentUser.password;
     }
     
+    console.log('nombre   :' + this.name);
+    console.log('apellido :' + this.last_name);
+    console.log('correo   :' + this.email);
     console.log('usuario  :' + this.user);
     console.log('password :' + this.pass);
     console.log('token  :' + this.msj);
@@ -33,6 +42,11 @@ export class PrincipalPage implements OnInit {
   cambioPass(){
     this.router.navigate(["change-password"]);
   }
+
+  infoUser(){
+    this.router.navigate(["user-info"]);
+  }
+
 
   logout() {
     localStorage.removeItem('user');
